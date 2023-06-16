@@ -1,0 +1,61 @@
+﻿.container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.image-wrapper {
+    margin-right: 10px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.details {
+    flex: 1;
+}
+
+h4 {
+    margin: 0;
+}
+
+.order-price {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.loading,
+.no-orders {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+    .loading span,
+    .no-orders span {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+
+h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}

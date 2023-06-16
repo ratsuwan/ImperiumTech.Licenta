@@ -1,0 +1,71 @@
+﻿@inject IProductService ProductService
+@implements IDisposable
+
+@if (ProductService.Products == null || ProductService.Products.Count == 0)
+{
+<span>@ProductService.Message</span>
+}
+else
+{
+<div class="row">
+    @foreach (var product in ProductService.Products)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <a href="/product/@product.Id">
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img class="card-img-top" src="@product.ImageUrl" alt="@product.Title" />
+                    }
+                    else if (product.Images.Count > 0)
+                    {
+                        <img class="card-img-top" src="@product.Images[0].Data" alt="@product.Title" />
+                    }
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                        
+                    <h6 class="card-price">@GetPriceText(product)</h6>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="pagination">
+    @for (var i = 1; i <= ProductService.PageCount; i++)
+    {
+        <a class="btn @(i == ProductService.CurrentPage ? "btn-info" : "btn-outline-info") page-selection"
+           href="/search/@ProductService.LastSearchText/@i">@i</a>
+    }
+</div>
+}
+
+
+
+@code {
+	protected override  void OnInitialized()
+	{
+		ProductService.ProductsChanged += StateHasChanged;
+	}
+
+	public void Dispose()
+	{
+		ProductService.ProductsChanged -= StateHasChanged;
+	}
+
+	private string GetPriceText(Product product){
+		var variants = product.Variants;
+		if (variants.Count == 0)
+		{
+			return string.Empty;
+		}
+		else if (variants.Count ==1)
+		{
+			return $" {variants[0].Price} lei";
+		}
+		decimal minPrice = variants.Min(v => v.Price);
+		return $"Incepand de la {minPrice} lei";
+	}
+
+}

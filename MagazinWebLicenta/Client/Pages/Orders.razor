@@ -1,0 +1,47 @@
+﻿@page "/orders"
+@inject IOrderService OrderService
+
+
+<h3>Comenzi</h3>
+
+@if (orders == null)
+{
+	<div class="loading">
+		<span>Comenzile se incarca...</span>
+	</div>
+}
+else if (orders.Count <= 0)
+{
+	<div class="no-orders">
+		<span>Inca nu ai comenzi! Comanda acum!</span>
+	</div>
+}
+else
+{
+	foreach (var order in orders)
+	{
+		<div class="container">
+			<div class="image-wrapper">
+				<img src="@order.ProductImageUrl" class="image" />
+			</div>
+			<div class="details">
+				<h4>@order.Product</h4>
+				<span>@order.OrderDate</span><br />
+				<a href="orders/@order.Id">Arata mai mult...</a>
+			</div>
+			<div class="order-price">
+				@order.TotalPrice lei
+			</div>
+		</div>
+	}
+}
+
+
+@code {
+	List<OrderOverviewResponse> orders = null;
+
+	protected override async Task OnInitializedAsync()
+	{
+		orders = await OrderService.GetOrders();
+	}	
+}

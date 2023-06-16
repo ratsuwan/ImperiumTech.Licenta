@@ -1,0 +1,20 @@
+﻿<CascadingAuthenticationState>
+
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(ShopLayout)">
+            <NotAuthorized>
+                <h3>Imi pare rau, dar nu esti autorizat sa vezi pagina aceasta!</h3>
+                <h5>Te rog sa te  <a href="login">autentifici</a> sau sa te <a href="register">inregistrezi</a> pentru un cont nou.</h5>
+            </NotAuthorized>
+            </AuthorizeRouteView>
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(ShopLayout)">
+            <p role="alert">Imi pare rau, nu este nimic la aceasta adresa.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+</CascadingAuthenticationState>

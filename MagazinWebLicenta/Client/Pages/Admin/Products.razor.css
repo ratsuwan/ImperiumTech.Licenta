@@ -1,0 +1,44 @@
+﻿.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.float-end {
+    float: right;
+}
+
+.oi {
+    margin-right: 5px;
+}

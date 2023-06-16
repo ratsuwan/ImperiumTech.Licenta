@@ -1,0 +1,77 @@
+﻿
+
+.header {
+    display: flex;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    padding: 20px;
+
+}
+
+.col {
+    flex: 1;
+
+}
+
+.col-visible {
+    text-align: center;
+}
+
+/* Margins and padding for the rows */
+.row {
+    margin-bottom: 10px;
+}
+
+    /* Bold styling for the category name */
+    .row strong {
+        font-weight: bold;
+    }
+
+    /* Styling for the category URL */
+    .row a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .row a:hover {
+            text-decoration: underline;
+        }
+
+    /* Styling for the checkmark symbol */
+    .row .col-visible span {
+        font-size: 20px;
+    }
+
+/* Spacing and color for the buttons */
+.btn {
+    margin-right: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+/* Add some bottom margin to the "Add a New Category" button */
+button.mb-2 {
+    margin-bottom: 10px;
+}
+
+
+h3 {
+    margin-left: 20px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}

@@ -1,0 +1,116 @@
+﻿@page "/product/{id:int}"
+@inject IProductService ProductService
+@inject ICartService CartService
+
+@if (product == null)
+{
+	<div class="alert alert-info">
+		<span>@message</span>
+	</div>
+}
+else
+{
+	<div class="product-details">
+		<div class="product-images">
+			@if (!string.IsNullOrEmpty(product.ImageUrl))
+			{
+				<img class="product-image" src="@product.ImageUrl" alt="@product.Title" />
+			}
+			else
+			{
+				<MudCarousel Class="mud-width-full" ItemsSource="@product.Images" Style="height: 200px;">
+					<ItemTemplate>
+						<MudImage Src="@context.Data"></MudImage>
+					</ItemTemplate>
+				</MudCarousel>
+			}
+		</div>
+		<div class="product-info">
+			<h2 class="product-title">@product.Title</h2>
+			<p class="product-description">@product.Description</p>
+
+			@if (product.Variants != null && product.Variants.Count > 1)
+			{
+				<div class="product-variants">
+					<label for="variant-select" class="variant-label">Selecteaza varianta:</label>
+					<select id="variant-select" class="form-select" @bind="currentTypeId">
+						@foreach (var variant in product.Variants)
+						{
+							<option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
+						}
+					</select>
+				</div>
+			}
+
+			@if (GetSelectedvariant() != null)
+			{
+				@if (GetSelectedvariant().OriginalPrice > GetSelectedvariant().Price)
+				{
+					<h6 class="text-muted original-price">
+						@GetSelectedvariant().OriginalPrice lei
+					</h6>
+				}
+				<h4 class="price">
+					@GetSelectedvariant().Price lei
+				</h4>
+			}
+
+			<button class="btn btn-primary add-to-cart-btn" @onclick="AddToCart">
+				<i class="oi oi-cart"></i> &nbsp;&nbsp;&nbsp; Adauga in cos
+			</button>
+		</div>
+	</div>
+}
+
+
+
+
+@code {
+	private Product? product = null;
+	private string message = string.Empty;
+	private int currentTypeId = 1;
+
+	[Parameter]
+	public int Id { get; set; }
+
+	protected override async Task OnParametersSetAsync()
+	{
+		message = "Loading product...";
+
+		var result = await ProductService.GetProduct(Id);
+		if (!result.Success)
+		{
+			message = result.Message;
+		}
+		else
+		{
+			product = result.Data;
+			if (product.Variants.Count > 0)
+			{
+				currentTypeId = product.Variants[0].ProductTypeId;
+			}
+		}
+
+
+	}
+
+	private ProductVariant GetSelectedvariant()
+	{
+		var variant = product.Variants.FirstOrDefault(v => v.ProductTypeId == currentTypeId);
+		return variant;
+	}
+
+	private async Task AddToCart()
+	{
+		var productVariant = GetSelectedvariant();
+		var cartItem = new CartItem
+			{
+				ProductId = productVariant.ProductId,
+				ProductTypeId = productVariant.ProductTypeId
+			};
+			await CartService.AddToCart(cartItem);
+	}
+
+}
+
+

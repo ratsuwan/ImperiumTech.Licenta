@@ -1,0 +1,44 @@
+﻿@page "/orders/{orderId:int}"
+@inject IOrderService OrderService
+
+@if (order == null)
+{
+	<div class="loading">Comenzile se încarcă...</div>
+}
+else
+{
+	<h3>Comandată în @order.OrderDate</h3>
+	<div class="order-details">
+		@foreach (var product in order.Products)
+		{
+			<div class="product-container">
+				<div class="image-wrapper">
+					<img src="@product.ImageUrl" class="image" />
+				</div>
+				<div class="product-info">
+					<h5><a href="/product/@product.ProductId">@product.Title</a></h5>
+					<span>@product.ProductType</span><br />
+					<span>Cantitate: @product.Quantity</span>
+				</div>
+				<div class="product-price">@product.TotalPrice lei</div>
+			</div>
+		}
+		<div class="order-total">
+			Total: @order.TotalPrice lei
+		</div>
+	</div>
+}
+
+
+
+@code {
+	[Parameter]
+	public int OrderId { get; set; }
+
+	OrderDetailsResponse order = null;
+
+	protected override async Task OnInitializedAsync()
+	{
+		order = await OrderService.GetOrderDetails(OrderId);
+	}
+}

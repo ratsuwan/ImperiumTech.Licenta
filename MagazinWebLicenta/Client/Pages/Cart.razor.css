@@ -1,0 +1,96 @@
+﻿/* Cart Container */
+.cart-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Product Box */
+.product-box {
+    flex: 1;
+    margin-right: 20px;
+}
+
+/* Cart Item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Image Wrapper */
+.image-wrapper {
+    margin-right: 10px;
+}
+
+
+.image {
+    max-width: 150px; /* Adjust the size as per your requirement */
+    height: auto;
+}
+
+/* Item Details */
+.item-details {
+    flex: 1;
+}
+
+    /* Item Title */
+    .item-details h5 {
+        margin: 0;
+        font-size: 16px;
+    }
+
+/* Quantity Input */
+.input-quantity {
+    width: 50px;
+    margin-top: 5px;
+}
+
+/* Delete Button */
+.btn-delete {
+    margin-top: 5px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Item Price */
+.item-price {
+    font-weight: bold;
+}
+
+/* Cart Total */
+.cart-total {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Address Box */
+.address-box {
+    flex: 1;
+}
+
+/* Delivery Address */
+.delivery-address {
+    margin-bottom: 10px;
+    margin-left: 640px;
+}
+
+/* Finalizare Comanda Button */
+.btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+h3 {
+    margin-left: 20px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}

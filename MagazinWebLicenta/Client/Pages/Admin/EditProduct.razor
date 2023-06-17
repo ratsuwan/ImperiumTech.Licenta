@@ -1,7 +1,7 @@
 ﻿@page "/admin/product"
 @page "/admin/product/{id:int}"
-@inject IProductService ProductService
-@inject IProductTypeService ProductTypeService
+@inject IServiciulProduse ServiciulProduse
+@inject IServiciulTipuriDeProduse ServiciulTipuriDeProduse
 @inject ICategoryService CategoryService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
@@ -72,7 +72,7 @@ else
 			<div class="row">
 				<div class="col">
 					<InputSelect disabled="@variant.Deleted" @bind-Value="variant.ProductTypeId" class="form-control">
-						@foreach (var productType in ProductTypeService.ProductTypes)
+						@foreach (var productType in ServiciulTipuriDeProduse.ProductTypes)
 						{
 							<option value="@productType.Id.ToString()">@productType.Name</option>
 						}
@@ -142,7 +142,7 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		await ProductTypeService.GetProductTypes();
+		await ServiciulTipuriDeProduse.GetProductTypes();
 		await CategoryService.GetAdminCategories();
 	}
 
@@ -155,7 +155,7 @@ else
 		}
 		else
 		{
-			Product dbProduct = (await ProductService.GetProduct(Id)).Data;
+			Product dbProduct = (await ServiciulProduse.GetProduct(Id)).Data;
 			if (dbProduct == null)
 			{
 				msg = $"Produsul cu ID '{Id}' nu exista!";
@@ -195,13 +195,13 @@ else
 	{
 		if (product.IsNew)
 		{
-			var result = await ProductService.CreateProduct(product);
+			var result = await ServiciulProduse.CreateProduct(product);
 			NavigationManager.NavigateTo($"admin/product/{result.Id}");
 		}
 		else
 		{
 			product.IsNew = false;
-			product = await ProductService.UpdateProduct(product);
+			product = await ServiciulProduse.UpdateProduct(product);
 			NavigationManager.NavigateTo($"admin/product/{product.Id}", true);
 		}
 	}
@@ -212,7 +212,7 @@ else
 		$"Esti sigur ca vrei sa stergi produsul '{product.Title}'?");
 		if (confirmed)
 		{
-			await ProductService.DeleteProduct(product);
+			await ServiciulProduse.DeleteProduct(product);
 			NavigationManager.NavigateTo("admin/products");
 		}
 

@@ -1,14 +1,14 @@
-﻿@inject IProductService ProductService
+﻿@inject IServiciulProduse ServiciulProduse
 @implements IDisposable
 
-@if (ProductService.Products == null || ProductService.Products.Count == 0)
+@if (ServiciulProduse.Products == null || ServiciulProduse.Products.Count == 0)
 {
-<span>@ProductService.Message</span>
+<span>@ServiciulProduse.Message</span>
 }
 else
 {
 <div class="row">
-    @foreach (var product in ProductService.Products)
+    @foreach (var product in ServiciulProduse.Products)
     {
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card">
@@ -33,10 +33,10 @@ else
 </div>
 
 <div class="pagination">
-    @for (var i = 1; i <= ProductService.PageCount; i++)
+    @for (var i = 1; i <= ServiciulProduse.PageCount; i++)
     {
-        <a class="btn @(i == ProductService.CurrentPage ? "btn-info" : "btn-outline-info") page-selection"
-           href="/search/@ProductService.LastSearchText/@i">@i</a>
+        <a class="btn @(i == ServiciulProduse.CurrentPage ? "btn-info" : "btn-outline-info") page-selection"
+           href="/search/@ServiciulProduse.LastSearchText/@i">@i</a>
     }
 </div>
 }
@@ -46,12 +46,12 @@ else
 @code {
 	protected override  void OnInitialized()
 	{
-		ProductService.ProductsChanged += StateHasChanged;
+		ServiciulProduse.ProductsChanged += StateHasChanged;
 	}
 
 	public void Dispose()
 	{
-		ProductService.ProductsChanged -= StateHasChanged;
+		ServiciulProduse.ProductsChanged -= StateHasChanged;
 	}
 
 	private string GetPriceText(Product product){

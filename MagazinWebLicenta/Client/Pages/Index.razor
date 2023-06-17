@@ -1,7 +1,7 @@
 ﻿@page "/"
 @page "/search/{searchText}/{page:int}"
 @page "/{categoryUrl}"
-@inject IProductService ProductService
+@inject IServiciulProduse ServiciulProduse
 
 <PageTitle>ImperiumTech</PageTitle>
 
@@ -31,11 +31,11 @@ else
 	{
 		if(SearchText != null)
 		{
-			await ProductService.SearchProducts(SearchText, Page);
+			await ServiciulProduse.SearchProducts(SearchText, Page);
 		}
 		else
 		{
-			await ProductService.GetProducts(CategoryUrl);
+			await ServiciulProduse.GetProducts(CategoryUrl);
 		}
 		
 	}

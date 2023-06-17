@@ -1,14 +1,14 @@
 global using MagazinWebLicenta.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using MagazinWebLicenta.Server.Data;
-global using MagazinWebLicenta.Server.Services.ProductService;
+global using MagazinWebLicenta.Server.Services.ServiciulProduse;
 global using MagazinWebLicenta.Server.Services.CategoryService;
 global using MagazinWebLicenta.Server.Services.CartService;
 global using MagazinWebLicenta.Server.Services.AuthService;
 global using MagazinWebLicenta.Server.Services.OrderService;
 global using MagazinWebLicenta.Server.Services.PaymentService;
-global using MagazinWebLicenta.Server.Services.AddressService;
-global using MagazinWebLicenta.Server.Services.ProductTypeService;
+global using MagazinWebLicenta.Server.Services.ServiciulAdresa;
+global using MagazinWebLicenta.Server.Services.ServiciulTipuriDeProduse;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -29,14 +29,14 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IServiciulProduse, ServiciulProduse>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-builder.Services.AddScoped<IAddressService, AddressService>();
-builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+builder.Services.AddScoped<IServiciulAdresa, ServiciulAdresa>();
+builder.Services.AddScoped<IServiciulTipulDeProduse, ServiciulTipuriDeProduse>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

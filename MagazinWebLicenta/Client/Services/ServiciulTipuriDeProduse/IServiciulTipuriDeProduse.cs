@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Client.Services.ProductTypeService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulTipuriDeProduse
 {
-    public interface IProductTypeService
+    public interface IServiciulTipuriDeProduse
     {
         event Action OnChange;
         public List<ProductType> ProductTypes { get; set; }

@@ -1,10 +1,10 @@
-﻿namespace MagazinWebLicenta.Client.Services.AddressService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulAdresa
 {
-	public class AddressService : IAddressService
+	public class ServiciulAdresa : IServiciulAdresa
 	{
 		private readonly HttpClient http;
 
-		public AddressService(HttpClient http)
+		public ServiciulAdresa(HttpClient http)
         {
 			this.http = http;
 		}

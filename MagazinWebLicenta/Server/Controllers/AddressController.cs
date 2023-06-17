@@ -9,23 +9,23 @@ namespace MagazinWebLicenta.Server.Controllers
 	[Authorize]
 	public class AddressController : ControllerBase
 	{
-		private readonly IAddressService addressService;
+		private readonly IServiciulAdresa ServiciulAdresa;
 
-		public AddressController(IAddressService addressService)
+		public AddressController(IServiciulAdresa ServiciulAdresa)
         {
-			this.addressService = addressService;
+			this.ServiciulAdresa = ServiciulAdresa;
 		}
 
 		[HttpGet]
 		 public async Task<ActionResult<ServiceResponse<Address>>> GetAddress()
 		{
-			return await this.addressService.GetAddress();
+			return await this.ServiciulAdresa.GetAddress();
 		}
 
 		[HttpPost]
 		public async Task<ActionResult<ServiceResponse<Address>>> AddOrUpdateAddress(Address address)
 		{
-			return await this.addressService.AddOrUpdateAddress(address);
+			return await this.ServiciulAdresa.AddOrUpdateAddress(address);
 		}
 	}
 }

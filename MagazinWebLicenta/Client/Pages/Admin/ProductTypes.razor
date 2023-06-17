@@ -1,5 +1,5 @@
 ﻿@page "/admin/product-types"
-@inject IProductTypeService ProductTypeService
+@inject IServiciulTipuriDeProduse ServiciulTipuriDeProduse
 @implements IDisposable
 @attribute [Authorize(Roles ="Admin")]
 
@@ -10,7 +10,7 @@
     <i class="oi oi-plus"></i> Adauga un nou tip de produse
 </button>
 
-@foreach (var productType in ProductTypeService.ProductTypes)
+@foreach (var productType in ServiciulTipuriDeProduse.ProductTypes)
 {
     @if (productType.Editing)
     {
@@ -51,12 +51,12 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		await ProductTypeService.GetProductTypes();
-		ProductTypeService.OnChange += StateHasChanged;
+		await ServiciulTipuriDeProduse.GetProductTypes();
+		ServiciulTipuriDeProduse.OnChange += StateHasChanged;
 	}
 	public void Dispose()
 	{
-		ProductTypeService.OnChange -= StateHasChanged;
+		ServiciulTipuriDeProduse.OnChange -= StateHasChanged;
 	}
 
 	private void EditProductType(ProductType productType)
@@ -67,15 +67,15 @@
 
 	private void CreateNewProductType()
 	{
-		editingProductType = ProductTypeService.CreateNewProductType();
+		editingProductType = ServiciulTipuriDeProduse.CreateNewProductType();
 	}
 
 	private async Task UpdateProductType()
 	{
 		if (editingProductType.IsNew)
-			await ProductTypeService.AddProductType(editingProductType);
+			await ServiciulTipuriDeProduse.AddProductType(editingProductType);
 		else
-			await ProductTypeService.UpdateProductType(editingProductType);
+			await ServiciulTipuriDeProduse.UpdateProductType(editingProductType);
 
 		editingProductType = new ProductType();
 	}

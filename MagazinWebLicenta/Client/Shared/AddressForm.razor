@@ -1,4 +1,4 @@
-﻿@inject IAddressService AddressService
+﻿@inject IServiciulAdresa ServiciulAdresa
 
 @if(address == null)
 {
@@ -68,14 +68,14 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		address = await AddressService.GetAddress();
+		address = await ServiciulAdresa.GetAddress();
 	}
 
 
 	private async Task SubmitAddress()
 	{
 		editAddress = false;
-		address = await AddressService.AddOrUpdateAddress(address);
+		address = await ServiciulAdresa.AddOrUpdateAddress(address);
 	}
 
 	private void InitAddress()

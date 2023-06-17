@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Client.Services.ProductService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulProduse
 {
-    public interface IProductService
+    public interface IServiciulProduse
     {
         event Action ProductsChanged;
 

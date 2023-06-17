@@ -1,5 +1,5 @@
 ﻿@inject NavigationManager NavigationManager
-@inject IProductService ProductService
+@inject IServiciulProduse ServiciulProduse
 
 <div class="input-group">
 	<input @bind-value="searchText"
@@ -58,7 +58,7 @@
 		}
 		else if (searchText.Length > 1)
 		{
-			suggestions = await ProductService.GetProductSeachSuggestions(searchText);
+			suggestions = await ServiciulProduse.GetProductSeachSuggestions(searchText);
 		}
 	}
 

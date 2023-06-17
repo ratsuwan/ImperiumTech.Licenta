@@ -1,17 +1,17 @@
-﻿@inject IProductService ProductService
+﻿@inject IServiciulProduse ServiciulProduse
 @implements IDisposable
 
 <center><h2 class="section-title">Oferte de Top</h2></center>
-@if (ProductService.Products == null || ProductService.Products.Count == 0)
+@if (ServiciulProduse.Products == null || ServiciulProduse.Products.Count == 0)
 {
     <div class="container">
-        <span class="message">@ProductService.Message</span>
+        <span class="message">@ServiciulProduse.Message</span>
     </div>
 }
 else
 {
     <div class="container">
-        @foreach (var product in ProductService.Products)
+        @foreach (var product in ServiciulProduse.Products)
         {
             @if (product.Featured)
             {
@@ -45,12 +45,12 @@ else
 
 	protected override void OnInitialized()
 	{
-		ProductService.ProductsChanged += StateHasChanged;
+		ServiciulProduse.ProductsChanged += StateHasChanged;
 	}
 
 	public void Dispose()
 	{
-		ProductService.ProductsChanged -= StateHasChanged;
+		ServiciulProduse.ProductsChanged -= StateHasChanged;
 	}
 
 }

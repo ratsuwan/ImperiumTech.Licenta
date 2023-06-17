@@ -9,30 +9,30 @@ namespace MagazinWebLicenta.Server.Controllers
     [Authorize(Roles = "Admin")]
     public class ProductTypeController : ControllerBase
     {
-        private readonly IProductTypeService productTypeService;
+        private readonly IServiciulTipulDeProduse ServiciulTipuriDeProduse;
 
-        public ProductTypeController(IProductTypeService productTypeService)
+        public ProductTypeController(IServiciulTipulDeProduse ServiciulTipuriDeProduse)
         {
-            this.productTypeService = productTypeService;
+            this.ServiciulTipuriDeProduse = ServiciulTipuriDeProduse;
         }
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<ProductType>>>> GetProductTypes()
         {
-            var response = await this.productTypeService.GetProductTypes();
+            var response = await this.ServiciulTipuriDeProduse.GetProductTypes();
             return Ok(response);
         }
 
 		[HttpPost]
 		public async Task<ActionResult<ServiceResponse<List<ProductType>>>> AddProductType(ProductType productType)
 		{
-			var response = await this.productTypeService.AddProductType(productType);
+			var response = await this.ServiciulTipuriDeProduse.AddProductType(productType);
 			return Ok(response);
 		}
 
 		[HttpPut]
 		public async Task<ActionResult<ServiceResponse<List<ProductType>>>> UpdateProductType(ProductType productType)
 		{
-			var response = await this.productTypeService.UpdateProductType(productType);
+			var response = await this.ServiciulTipuriDeProduse.UpdateProductType(productType);
 			return Ok(response);
 		}
 	}

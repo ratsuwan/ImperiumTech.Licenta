@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Server.Services.AddressService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulAdresa
 {
-	public interface IAddressService
+	public interface IServiciulAdresa
 	{
 		Task<ServiceResponse<Address>> GetAddress();
 		Task<ServiceResponse<Address>> AddOrUpdateAddress(Address address);

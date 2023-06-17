@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace MagazinWebLicenta.Client.Services.ProductTypeService
+namespace MagazinWebLicenta.Client.Services.ServiciulTipuriDeProduse
 {
-    public class ProductTypeService : IProductTypeService
+    public class ServiciulTipuriDeProduse : IServiciulTipuriDeProduse
     {
         private readonly HttpClient http;
 
-        public ProductTypeService(HttpClient http)
+        public ServiciulTipuriDeProduse(HttpClient http)
         {
             this.http = http;
         }

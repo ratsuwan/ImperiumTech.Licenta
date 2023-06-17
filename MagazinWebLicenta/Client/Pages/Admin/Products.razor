@@ -1,5 +1,5 @@
 ﻿@page "/admin/products"
-@inject IProductService ProductService
+@inject IServiciulProduse ServiciulProduse
 @inject NavigationManager NavigationManager
 @attribute [Authorize(Roles = "Admin")]
 
@@ -7,7 +7,7 @@
 
 <h3>Produse</h3>
 
-@if (ProductService.AdminProducts == null)
+@if (ServiciulProduse.AdminProducts == null)
 {
     <div class="loading">
         <span>Produsele se incarca...</span>
@@ -30,7 +30,7 @@ else
             </tr>
         </thead>
         <tbody>
-            <Virtualize Items="ProductService.AdminProducts" Context="product">
+            <Virtualize Items="ServiciulProduse.AdminProducts" Context="product">
                 <tr>
                     <td>
                         @if (!string.IsNullOrEmpty(product.ImageUrl))
@@ -75,7 +75,7 @@ else
 @code {
 	protected override async Task OnInitializedAsync()
 	{
-		await ProductService.GetAdminProducts();
+		await ServiciulProduse.GetAdminProducts();
 	}
 
 	void EditProduct(int productId)

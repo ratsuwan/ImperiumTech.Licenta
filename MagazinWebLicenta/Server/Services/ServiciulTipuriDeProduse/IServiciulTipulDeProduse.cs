@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Server.Services.ProductTypeService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulTipuriDeProduse
 {
-    public interface IProductTypeService
+    public interface IServiciulTipulDeProduse
     {
         Task<ServiceResponse<List<ProductType>>> GetProductTypes();
 		Task<ServiceResponse<List<ProductType>>> AddProductType(ProductType productType);

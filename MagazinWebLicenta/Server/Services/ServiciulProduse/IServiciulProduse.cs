@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Server.Services.ProductService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulProduse
 {
-    public interface IProductService
+    public interface IServiciulProduse
     {
         Task<ServiceResponse<List<Product>>> GetProductsAsync();
         Task<ServiceResponse<Product>> GetProductAsync(int productId);

@@ -1,13 +1,13 @@
 ﻿using MagazinWebLicenta.Server.Migrations;
 
-namespace MagazinWebLicenta.Server.Services.ProductService
+namespace MagazinWebLicenta.Server.Services.ServiciulProduse
 {
-	public class ProductService : IProductService
+	public class ServiciulProduse : IServiciulProduse
 	{
 		private readonly DataContext context;
 		private readonly IHttpContextAccessor httpContextAccessor;
 
-		public ProductService(DataContext context, IHttpContextAccessor httpContextAccessor)
+		public ServiciulProduse(DataContext context, IHttpContextAccessor httpContextAccessor)
 		{
 			this.context = context;
 			this.httpContextAccessor = httpContextAccessor;

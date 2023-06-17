@@ -1,11 +1,11 @@
-﻿namespace MagazinWebLicenta.Server.Services.AddressService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulAdresa
 {
-	public class AddressService : IAddressService
+	public class ServiciulAdresa : IServiciulAdresa
 	{
 		private readonly DataContext context;
 		private readonly IAuthService authService;
 
-		public AddressService(DataContext context, IAuthService authService)
+		public ServiciulAdresa(DataContext context, IAuthService authService)
         {
 			this.context = context;
 			this.authService = authService;

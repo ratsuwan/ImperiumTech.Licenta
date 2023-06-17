@@ -1,12 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace MagazinWebLicenta.Server.Services.ProductTypeService
+namespace MagazinWebLicenta.Server.Services.ServiciulTipuriDeProduse
 {
-    public class ProductTypeService : IProductTypeService
+    public class ServiciulTipuriDeProduse : IServiciulTipulDeProduse
     {
         private readonly DataContext context;
 
-        public ProductTypeService(DataContext context)
+        public ServiciulTipuriDeProduse(DataContext context)
         {
             this.context = context;
         }

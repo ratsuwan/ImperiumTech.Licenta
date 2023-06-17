@@ -9,53 +9,53 @@ namespace MagazinWebLicenta.Server.Controllers
     public class ProductController : ControllerBase
 	{
         
-        private readonly IProductService productService;
+        private readonly IServiciulProduse ServiciulProduse;
 
-        public ProductController(IProductService productService)
+        public ProductController(IServiciulProduse ServiciulProduse)
         {
             
-            this.productService = productService;
+            this.ServiciulProduse = ServiciulProduse;
         }
 
         [HttpGet("admin"), Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Product>>>> GetAdminProducts()
 		{
-			var result = await this.productService.GetAdminProducts();
+			var result = await this.ServiciulProduse.GetAdminProducts();
 			return Ok(result);
 		}
 
 		[HttpPost, Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Product>>>> CreateProduct(Product product)
 		{
-			var result = await this.productService.CreateProduct(product);
+			var result = await this.ServiciulProduse.CreateProduct(product);
 			return Ok(result);
 		}
 
 		[HttpPut, Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Product>>>> UpdateProduct(Product product)
 		{
-			var result = await this.productService.UpdateProduct(product);
+			var result = await this.ServiciulProduse.UpdateProduct(product);
 			return Ok(result);
 		}
 
 		[HttpDelete("{id}"), Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<bool>>> DeleteProduct(int id)
 		{
-			var result = await this.productService.DeleteProduct(id);
+			var result = await this.ServiciulProduse.DeleteProduct(id);
 			return Ok(result);
 		}
 
 		[HttpGet]
 		public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProducts()
         {
-            var result = await this.productService.GetProductsAsync();
+            var result = await this.ServiciulProduse.GetProductsAsync();
 			return Ok(result);
         }
 
         [HttpGet("{productId}")]
         public async Task<ActionResult<ServiceResponse<Product>>> GetProduct(int productId)
         {
-            var result = await this.productService.GetProductAsync(productId);
+            var result = await this.ServiciulProduse.GetProductAsync(productId);
             return Ok(result);
         }
 
@@ -63,7 +63,7 @@ namespace MagazinWebLicenta.Server.Controllers
 
         public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProductsByCategory(string categoryUrl)
         {
-            var result = await this.productService.GetProductsByCategory(categoryUrl);
+            var result = await this.ServiciulProduse.GetProductsByCategory(categoryUrl);
             return Ok(result);
         }
 
@@ -72,7 +72,7 @@ namespace MagazinWebLicenta.Server.Controllers
 
         public async Task<ActionResult<ServiceResponse<ProductSearchResult>>> SearchProducts(string searchText, int page =1 )
         {
-            var result = await this.productService.SearchProducts(searchText, page);
+            var result = await this.ServiciulProduse.SearchProducts(searchText, page);
             return Ok(result);
         }
 
@@ -80,7 +80,7 @@ namespace MagazinWebLicenta.Server.Controllers
 
         public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProductSearchSuggestions(string searchText)
         {
-            var result = await this.productService.GetProductSearchSuggestions(searchText);
+            var result = await this.ServiciulProduse.GetProductSearchSuggestions(searchText);
             return Ok(result);
         }
 
@@ -88,7 +88,7 @@ namespace MagazinWebLicenta.Server.Controllers
 
         public async Task<ActionResult<ServiceResponse<List<Product>>>> GetFeaturedProducts()
         {
-            var result = await this.productService.GetFeaturedProducts();
+            var result = await this.ServiciulProduse.GetFeaturedProducts();
             return Ok(result);
         }
     }

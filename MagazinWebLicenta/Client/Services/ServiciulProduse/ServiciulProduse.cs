@@ -2,13 +2,13 @@
 
 using System.Runtime.InteropServices;
 
-namespace MagazinWebLicenta.Client.Services.ProductService
+namespace MagazinWebLicenta.Client.Services.ServiciulProduse
 {
-    public class ProductService : IProductService
+    public class ServiciulProduse : IServiciulProduse
     {
         private readonly HttpClient http;
 
-        public ProductService(HttpClient http)
+        public ServiciulProduse(HttpClient http)
         {
             this.http = http;
         }

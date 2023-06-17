@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Client.Services.CartService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulCosCumparaturi
 {
-	public interface ICartService
+	public interface IServiciulCosCumparaturi
 	{
 		event Action OnChange;
 		Task AddToCart(CartItem cartItem);

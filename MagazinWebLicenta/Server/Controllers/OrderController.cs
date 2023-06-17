@@ -7,25 +7,25 @@ namespace MagazinWebLicenta.Server.Controllers
 	[ApiController]
 	public class OrderController : ControllerBase
 	{
-		private readonly IOrderService orderService;
+		private readonly IServiciulComenzi ServiciulComenzi;
 
-		public OrderController(IOrderService orderService)
+		public OrderController(IServiciulComenzi ServiciulComenzi)
         {
-			this.orderService = orderService;
+			this.ServiciulComenzi = ServiciulComenzi;
 		}
 
 
 		[HttpGet]
 		public async Task<ActionResult<ServiceResponse<List<OrderOverviewResponse>>>> GetOrders()
 		{
-			var result = await this.orderService.GetOrders();
+			var result = await this.ServiciulComenzi.GetOrders();
 			return Ok(result);
 		}
 
 		[HttpGet("{orderId}")]
 		public async Task<ActionResult<ServiceResponse<OrderDetailsResponse>>> GetOrdersDetails(int orderId)
 		{
-			var result = await this.orderService.GetOrderDetails(orderId);
+			var result = await this.ServiciulComenzi.GetOrderDetails(orderId);
 			return Ok(result);
 		}
 	}

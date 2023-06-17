@@ -1,19 +1,19 @@
 ﻿using Stripe;
 using Stripe.Checkout;
 
-namespace MagazinWebLicenta.Server.Services.PaymentService
+namespace MagazinWebLicenta.Server.Services.ServiciulPlati
 {
-	public class PaymentService : IPaymentService
+	public class ServiciulPlati : IServiciulPlati
 	{
-		private readonly ICartService cartService;
-		private readonly IAuthService authService;
-		private readonly IOrderService orderService;
+		private readonly IServiciulCosCumparaturi cartService;
+		private readonly IServiciulAutentificari authService;
+		private readonly IServiciulComenzi orderService;
 
 		const string secret = "whsec_b7f4914b81d8b55515fe8dbf34634803e01d4202b24e7b7f5351991c9ddb883b";
 
-		public PaymentService(ICartService cartService,
-			IAuthService authService,
-			IOrderService orderService)
+		public ServiciulPlati(IServiciulCosCumparaturi cartService,
+			IServiciulAutentificari authService,
+			IServiciulComenzi orderService)
         {
 			StripeConfiguration.ApiKey = "sk_test_51Mt8u3BuzkITudG44yDU4U5uZcfKyxrryDiDDT2Ey06owjq6lT84JdGb8X6DB7dJCdV7jJlYJ6vVXhjhx7C8YsFh00jgbpP6zT";
 

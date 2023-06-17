@@ -1,7 +1,7 @@
 ﻿@page "/cart"
-@inject ICartService CartService
-@inject IOrderService OrderService
-@inject IAuthService AuthService
+@inject IServiciulCosCumparaturi ServiciulCosCumparaturi
+@inject IServiciulComenzi ServiciulComenzi
+@inject IServiciulAutentificari ServiciulAutentificari
 @inject NavigationManager NavigationManager
 
 <PageTitle>ShoppingCart</PageTitle>
@@ -72,21 +72,21 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		isAuthenticated = await AuthService.IsUserAuthenticated();
+		isAuthenticated = await ServiciulAutentificari.IsUserAuthenticated();
 		await LoadCart();
 
 	}
 
 	private async Task RemoveProductFromCart(int productId, int productTypeId)
 	{
-		await CartService.RemoveProductFromCart(productId, productTypeId);
+		await ServiciulCosCumparaturi.RemoveProductFromCart(productId, productTypeId);
 		await LoadCart();
 	}
 
 	private async Task LoadCart()
 	{
-		await CartService.GetCartItemsCount();
-		cartProducts = await CartService.GetCartProducts();
+		await ServiciulCosCumparaturi.GetCartItemsCount();
+		cartProducts = await ServiciulCosCumparaturi.GetCartProducts();
 
 		if (cartProducts == null || cartProducts.Count == 0)
 		{
@@ -99,12 +99,12 @@ else
 		product.Quantity = int.Parse(e.Value.ToString());
 		if (product.Quantity < 1)
 			product.Quantity = 1;
-		await CartService.UpdateQuantity(product);
+		await ServiciulCosCumparaturi.UpdateQuantity(product);
 	}
 
 	private async Task PlaceOrder()
 	{
-		string url = await OrderService.PlaceOrder();
+		string url = await ServiciulComenzi.PlaceOrder();
 		NavigationManager.NavigateTo(url);
 	}
 

@@ -1,4 +1,4 @@
-﻿@inject ICartService CartService
+﻿@inject IServiciulCosCumparaturi ServiciulCosCumparaturi
 @inject ISyncLocalStorageService LocalStorage
 @implements IDisposable
 
@@ -16,12 +16,12 @@
 
 	protected override void	OnInitialized()
 	{
-		CartService.OnChange += StateHasChanged;
+		ServiciulCosCumparaturi.OnChange += StateHasChanged;
 	}
 
 	public void Dispose()
 	{
-		CartService.OnChange -= StateHasChanged;
+		ServiciulCosCumparaturi.OnChange -= StateHasChanged;
 	}
 
 }

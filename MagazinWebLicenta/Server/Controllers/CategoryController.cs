@@ -8,45 +8,45 @@ namespace MagazinWebLicenta.Server.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService categoryService;
+        private readonly IServiciulCategorii ServiciulCategorii;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(IServiciulCategorii ServiciulCategorii)
         {
-            this.categoryService = categoryService;
+            this.ServiciulCategorii = ServiciulCategorii;
         }
 
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<Category>>>> GetCategories()
         {
-            var result = await categoryService.GetCategories();
+            var result = await ServiciulCategorii.GetCategories();
             return Ok(result);
         }
 
 		[HttpGet("admin"), Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Category>>>> GetAdminCategories()
 		{
-			var result = await categoryService.GetAdminCategories();
+			var result = await ServiciulCategorii.GetAdminCategories();
 			return Ok(result);
 		}
 
 		[HttpDelete("admin/{id}"), Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Category>>>> DeleteCategory(int id)
 		{
-			var result = await categoryService.DeleteCategory(id);
+			var result = await ServiciulCategorii.DeleteCategory(id);
 			return Ok(result);
 		}
 
 		[HttpPost("admin"), Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Category>>>> AddCategory(Category category)
 		{
-			var result = await categoryService.AddCategory(category);
+			var result = await ServiciulCategorii.AddCategory(category);
 			return Ok(result);
 		}
 
 		[HttpPut("admin"), Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ServiceResponse<List<Category>>>> UpdateCategory(Category category)
 		{
-			var result = await categoryService.UpdateCategory(category);
+			var result = await ServiciulCategorii.UpdateCategory(category);
 			return Ok(result);
 		}
 	}

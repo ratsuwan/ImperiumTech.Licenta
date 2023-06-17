@@ -8,11 +8,11 @@ namespace MagazinWebLicenta.Server.Controllers
 	[ApiController]
 	public class PaymentController : ControllerBase
 	{
-		private readonly IPaymentService paymentService;
+		private readonly IServiciulPlati ServiciulPlati;
 
-		public PaymentController(IPaymentService paymentService)
+		public PaymentController(IServiciulPlati ServiciulPlati)
         {
-			this.paymentService = paymentService;
+			this.ServiciulPlati = ServiciulPlati;
 		}
 
 
@@ -20,14 +20,14 @@ namespace MagazinWebLicenta.Server.Controllers
 		[HttpPost("checkout"), Authorize]
 		public async Task<ActionResult<string>> CreateCheckoutSession()
 		{
-			var session = await this.paymentService.CreateCheckoutSession();
+			var session = await this.ServiciulPlati.CreateCheckoutSession();
 			return Ok(session.Url);
 		}
 
 		[HttpPost]
 		public async Task<ActionResult<ServiceResponse<bool>>> FulfillOrder()
 		{
-			var response = await this.paymentService.FulfillOrder(Request);
+			var response = await this.ServiciulPlati.FulfillOrder(Request);
 			if(!response.Success)
 				return BadRequest(response.Message);
 			

@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Server.Services.CategoryService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulCategorii
 {
-    public interface ICategoryService
+    public interface IServiciulCategorii
     {
         Task<ServiceResponse<List<Category>>> GetCategories();
         Task<ServiceResponse<List<Category>>> GetAdminCategories();

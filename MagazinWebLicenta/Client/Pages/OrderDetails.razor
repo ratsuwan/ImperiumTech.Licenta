@@ -1,5 +1,5 @@
 ﻿@page "/orders/{orderId:int}"
-@inject IOrderService OrderService
+@inject IServiciulComenzi ServiciulComenzi
 
 @if (order == null)
 {
@@ -39,6 +39,6 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		order = await OrderService.GetOrderDetails(OrderId);
+		order = await ServiciulComenzi.GetOrderDetails(OrderId);
 	}
 }

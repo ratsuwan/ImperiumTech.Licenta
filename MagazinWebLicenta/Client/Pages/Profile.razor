@@ -1,5 +1,5 @@
 ﻿@page "/profile"
-@inject IAuthService AuthService
+@inject IServiciulAutentificari ServiciulAutentificari
 @attribute [Authorize]
 
 <AuthorizeView>
@@ -37,7 +37,7 @@
 
 	private async Task ChangePassword()
 	{
-		var result = await AuthService.ChangePassword(request);
+		var result = await ServiciulAutentificari.ChangePassword(request);
 		message = result.Message;
 	}
 }

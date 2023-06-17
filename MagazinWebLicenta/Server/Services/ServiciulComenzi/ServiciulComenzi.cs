@@ -1,18 +1,18 @@
 ﻿using System.Security.Claims;
 using MagazinWebLicenta.Shared;
 
-namespace MagazinWebLicenta.Server.Services.OrderService
+namespace MagazinWebLicenta.Server.Services.ServiciulComenzi
 {
-	public class OrderService : IOrderService
+	public class ServiciulComenzi : IServiciulComenzi
 	{
 		private readonly DataContext context;
-		private readonly ICartService cartService;
-		private readonly IAuthService authService;
+		private readonly IServiciulCosCumparaturi cartService;
+		private readonly IServiciulAutentificari authService;
 		private readonly IHttpContextAccessor httpContextAccessor;
 
-		public OrderService(DataContext context,
-			ICartService cartService,
-			IAuthService authService)
+		public ServiciulComenzi(DataContext context,
+			IServiciulCosCumparaturi cartService,
+			IServiciulAutentificari authService)
         {
 			this.context = context;
 			this.cartService = cartService;

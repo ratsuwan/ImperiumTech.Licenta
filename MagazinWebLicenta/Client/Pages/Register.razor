@@ -1,5 +1,5 @@
 ﻿@page "/register"
-@inject IAuthService AuthService
+@inject IServiciulAutentificari ServiciulAutentificari
 
 <PageTitle>Register</PageTitle>
 
@@ -36,7 +36,7 @@
 
 	async Task HandleRegistration()
 	{
-		var result = await AuthService.Register(user);
+		var result = await ServiciulAutentificari.Register(user);
 		message = result.Message;
 		if (result.Success)
 			messageCssClass = "text-success";

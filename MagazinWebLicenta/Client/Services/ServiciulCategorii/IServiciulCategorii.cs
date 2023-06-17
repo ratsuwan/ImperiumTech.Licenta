@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Client.Services.CategoryService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulCategorii
 {
-    public interface ICategoryService
+    public interface IServiciulCategorii
     {
         event Action OnChange;
 

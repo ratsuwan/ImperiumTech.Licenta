@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.Routing;
 
-namespace MagazinWebLicenta.Server.Services.CategoryService
+namespace MagazinWebLicenta.Server.Services.ServiciulCategorii
 {
-    public class CategoryService : ICategoryService
+    public class ServiciulCategorii : IServiciulCategorii
     {
         private readonly DataContext context;
 
-        public CategoryService(DataContext context)
+        public ServiciulCategorii(DataContext context)
         {
             this.context = context;
         }

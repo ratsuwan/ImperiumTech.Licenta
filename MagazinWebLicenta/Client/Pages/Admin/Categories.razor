@@ -1,5 +1,5 @@
 ﻿@page "/admin/categories"
-@inject ICategoryService CategoryService
+@inject IServiciulCategorii ServiciulCategorii
 @attribute [Authorize(Roles = "Admin")]
 @implements IDisposable
 
@@ -13,7 +13,7 @@
 
 </div>
 
-@foreach (var category in CategoryService.AdminCategories)
+@foreach (var category in ServiciulCategorii.AdminCategories)
 {
     @if (category.Editing)
     {
@@ -73,18 +73,18 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		await CategoryService.GetAdminCategories();
-		CategoryService.OnChange += StateHasChanged;
+		await ServiciulCategorii.GetAdminCategories();
+		ServiciulCategorii.OnChange += StateHasChanged;
 	}
 
 	public void Dispose()
 	{
-		CategoryService.OnChange -= StateHasChanged;
+		ServiciulCategorii.OnChange -= StateHasChanged;
 	}
 
 	private void CreateNewCategory()
 	{
-		editingCategory = CategoryService.CreateNewCategory();
+		editingCategory = ServiciulCategorii.CreateNewCategory();
 	}
 
 	private void EditCategory(Category category)
@@ -96,21 +96,21 @@
 	private async Task UpdateCategory()
 	{
 		if (editingCategory.IsNew)
-			await CategoryService.AddCategory(editingCategory);
+			await ServiciulCategorii.AddCategory(editingCategory);
 		else
-			await CategoryService.UpdateCategory(editingCategory);
+			await ServiciulCategorii.UpdateCategory(editingCategory);
 		editingCategory = new Category();
 	}
 
 	private async Task CancelEditing()
 	{
 		editingCategory = new Category();
-		await CategoryService.GetAdminCategories();
+		await ServiciulCategorii.GetAdminCategories();
 	}
 
 	private async Task DeleteCategory(int id)
 	{
-		await CategoryService.DeleteCategory(id);
+		await ServiciulCategorii.DeleteCategory(id);
 	}
 
 

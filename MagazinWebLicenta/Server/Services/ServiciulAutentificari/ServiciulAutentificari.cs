@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 
-namespace MagazinWebLicenta.Server.Services.AuthService
+namespace MagazinWebLicenta.Server.Services.ServiciulAutentificari
 {
-	public class AuthService : IAuthService
+	public class ServiciulAutentificari : IServiciulAutentificari
 	{
 		private readonly DataContext context;
 		private readonly IConfiguration configuration;
 		private readonly IHttpContextAccessor httpContextAccessor;
 
-		public AuthService(DataContext context,
+		public ServiciulAutentificari(DataContext context,
 			IConfiguration configuration,
 			IHttpContextAccessor httpContextAccessor)
         {

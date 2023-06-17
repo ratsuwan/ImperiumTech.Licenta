@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualBasic;
 
-namespace MagazinWebLicenta.Client.Services.CategoryService
+namespace MagazinWebLicenta.Client.Services.ServiciulCategorii
 {
-    public class CategoryService : ICategoryService
+    public class ServiciulCategorii : IServiciulCategorii
     {
         private readonly HttpClient http;
 
-        public CategoryService(HttpClient http)
+        public ServiciulCategorii(HttpClient http)
         {
             this.http = http;
         }

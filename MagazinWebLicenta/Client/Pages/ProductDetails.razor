@@ -1,6 +1,6 @@
 ﻿@page "/product/{id:int}"
 @inject IServiciulProduse ServiciulProduse
-@inject ICartService CartService
+@inject IServiciulCosCumparaturi ServiciulCosCumparaturi
 
 @if (product == null)
 {
@@ -108,7 +108,7 @@ else
 				ProductId = productVariant.ProductId,
 				ProductTypeId = productVariant.ProductTypeId
 			};
-			await CartService.AddToCart(cartItem);
+			await ServiciulCosCumparaturi.AddToCart(cartItem);
 	}
 
 }

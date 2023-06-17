@@ -2,14 +2,14 @@
 using MagazinWebLicenta.Shared;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace MagazinWebLicenta.Server.Services.CartService
+namespace MagazinWebLicenta.Server.Services.ServiciulCosCumparaturi
 {
-	public class CartService : ICartService
+	public class ServiciulCosCumparaturi : IServiciulCosCumparaturi
 	{
 		private DataContext _dataContext;
-		private readonly IAuthService authService;
+		private readonly IServiciulAutentificari authService;
 
-		public CartService(DataContext context, IAuthService authService)
+		public ServiciulCosCumparaturi(DataContext context, IServiciulAutentificari authService)
         {
 			Context = context;
 			this.authService = authService;

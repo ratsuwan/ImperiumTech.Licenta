@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Server.Services.CartService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulCosCumparaturi
 {
-	public interface ICartService
+	public interface IServiciulCosCumparaturi
 	{
 		Task<ServiceResponse<List<CartProductResponse>>> GetCartProducts(List<CartItem> cartItems);
 

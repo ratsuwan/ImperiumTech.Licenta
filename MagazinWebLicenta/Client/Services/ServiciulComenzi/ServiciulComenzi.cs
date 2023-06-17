@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace MagazinWebLicenta.Client.Services.OrderService
+namespace MagazinWebLicenta.Client.Services.ServiciulComenzi
 {
-	public class OrderService : IOrderService
+	public class ServiciulComenzi : IServiciulComenzi
 	{
 		private readonly HttpClient http;
 		private readonly AuthenticationStateProvider authStateProvider;
 		private readonly NavigationManager navigationManager;
 
-		public OrderService(HttpClient http,
+		public ServiciulComenzi(HttpClient http,
 			AuthenticationStateProvider authStateProvider,
 			NavigationManager navigationManager)
         {

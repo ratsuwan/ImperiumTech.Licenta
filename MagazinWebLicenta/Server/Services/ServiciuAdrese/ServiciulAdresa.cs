@@ -3,12 +3,12 @@
 	public class ServiciulAdresa : IServiciulAdresa
 	{
 		private readonly DataContext context;
-		private readonly IAuthService authService;
+		private readonly IServiciulAutentificari ServiciulAutentificari;
 
-		public ServiciulAdresa(DataContext context, IAuthService authService)
+		public ServiciulAdresa(DataContext context, IServiciulAutentificari ServiciulAutentificari)
         {
 			this.context = context;
-			this.authService = authService;
+			this.ServiciulAutentificari = ServiciulAutentificari;
 		}
 
         public async Task<ServiceResponse<Address>> AddOrUpdateAddress(Address address)
@@ -17,7 +17,7 @@
 			var dbAddress = (await GetAddress()).Data;
 			if (dbAddress == null)
 			{
-				address.UserId = this.authService.GetUserId();
+				address.UserId = this.ServiciulAutentificari.GetUserId();
 				this.context.Addresses.Add(address);
 				response.Data = address;
 			}
@@ -38,7 +38,7 @@
 
 		public async Task<ServiceResponse<Address>> GetAddress()
 		{
-			int userId = authService.GetUserId();
+			int userId = ServiciulAutentificari.GetUserId();
 			var address = await this.context.Addresses
 				.FirstOrDefaultAsync(a => a.UserId == userId);
 			return new ServiceResponse<Address> { Data = address };

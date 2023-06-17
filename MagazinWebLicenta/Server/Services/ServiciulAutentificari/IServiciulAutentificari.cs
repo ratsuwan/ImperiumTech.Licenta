@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Server.Services.AuthService
+﻿namespace MagazinWebLicenta.Server.Services.ServiciulAutentificari
 {
-	public interface IAuthService
+	public interface IServiciulAutentificari
 	{
 		Task<ServiceResponse<int>> Register(User user, string password);
 		Task<bool> UserExists(string email);

@@ -1,11 +1,11 @@
-﻿namespace MagazinWebLicenta.Client.Services.AuthService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulAutentificari
 {
-	public class AuthService : IAuthService
+	public class ServiciulAutentificari : IServiciulAutentificari
 	{
 		private readonly HttpClient http;
 		private readonly AuthenticationStateProvider authStateProvider;
 
-		public AuthService(HttpClient http, AuthenticationStateProvider authStateProvider)
+		public ServiciulAutentificari(HttpClient http, AuthenticationStateProvider authStateProvider)
         {
 			this.http = http;
 			this.authStateProvider = authStateProvider;

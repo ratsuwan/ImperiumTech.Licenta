@@ -1,6 +1,6 @@
-﻿namespace MagazinWebLicenta.Client.Services.OrderService
+﻿namespace MagazinWebLicenta.Client.Services.ServiciulComenzi
 {
-	public interface IOrderService
+	public interface IServiciulComenzi
 	{
 		Task<string> PlaceOrder();
 		Task<List<OrderOverviewResponse>> GetOrders();

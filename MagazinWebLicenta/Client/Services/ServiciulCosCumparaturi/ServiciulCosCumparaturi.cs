@@ -3,16 +3,16 @@ using MagazinWebLicenta.Client.Pages;
 using MagazinWebLicenta.Shared;
 using static System.Net.WebRequestMethods;
 
-namespace MagazinWebLicenta.Client.Services.CartService
+namespace MagazinWebLicenta.Client.Services.ServiciulCosCumparaturi
 {
-	public class CartService : ICartService
+	public class ServiciulCosCumparaturi : IServiciulCosCumparaturi
 	{
 		private readonly ILocalStorageService localStorage;
 		private readonly HttpClient http;
-		private readonly IAuthService authService;
+		private readonly IServiciulAutentificari authService;
 
-		public CartService(ILocalStorageService localStorage, HttpClient http,
-			IAuthService authService)
+		public ServiciulCosCumparaturi(ILocalStorageService localStorage, HttpClient http,
+			IServiciulAutentificari authService)
         {
 			this.localStorage = localStorage;
 			this.http = http;

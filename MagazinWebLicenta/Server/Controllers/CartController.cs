@@ -8,46 +8,46 @@ namespace MagazinWebLicenta.Server.Controllers
 	[ApiController]
 	public class CartController : ControllerBase
 	{
-		private readonly ICartService cartService;
+		private readonly IServiciulCosCumparaturi ServiciulCosCumparaturi;
 
-		public CartController(ICartService cartService)
+		public CartController(IServiciulCosCumparaturi ServiciulCosCumparaturi)
         {
-			this.cartService = cartService;
+			this.ServiciulCosCumparaturi = ServiciulCosCumparaturi;
 		}
 
 
 		[HttpPost("products")]
 		public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> GetCartProducts(List<CartItem> cartItems)
 		{
-			var result = await cartService.GetCartProducts(cartItems);
+			var result = await ServiciulCosCumparaturi.GetCartProducts(cartItems);
 			return Ok(result);
 		}
 
 		[HttpPost]
 		public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> StoreCartItems(List<CartItem> cartItems)
 		{
-			var result = await cartService.StoreCartItems(cartItems);
+			var result = await ServiciulCosCumparaturi.StoreCartItems(cartItems);
 			return Ok(result);
 		}
 
 		[HttpPost("add")]
 		public async Task<ActionResult<ServiceResponse<bool>>> AddToCart(CartItem cartItem)
 		{
-			var result = await cartService.AddToCart(cartItem);
+			var result = await ServiciulCosCumparaturi.AddToCart(cartItem);
 			return Ok(result);
 		}
 
 		[HttpPut("update-quantity")]
 		public async Task<ActionResult<ServiceResponse<bool>>> UpdateQuantity(CartItem cartItem)
 		{
-			var result = await cartService.UpdateQuantity(cartItem);
+			var result = await ServiciulCosCumparaturi.UpdateQuantity(cartItem);
 			return Ok(result);
 		}
 
 		[HttpDelete("{productId}/{productTypeId}")]
 		public async Task<ActionResult<ServiceResponse<bool>>> RemoveItemFromCart(int productId, int productTypeId)
 		{
-			var result = await cartService.RemoveItemFromCart(productId, productTypeId);
+			var result = await ServiciulCosCumparaturi.RemoveItemFromCart(productId, productTypeId);
 			return Ok(result);
 		}
 
@@ -55,14 +55,14 @@ namespace MagazinWebLicenta.Server.Controllers
 
 		public async Task<ActionResult<ServiceResponse<int>>> GetCartItemsCount()
 		{
-			return await this.cartService.GetCartItemsCount();
+			return await this.ServiciulCosCumparaturi.GetCartItemsCount();
 		}
 
 		[HttpGet]
 
 		public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> GetDbCartProducts()
 		{
-			var result = await this.cartService.GetDbCartProducts();
+			var result = await this.ServiciulCosCumparaturi.GetDbCartProducts();
 			return Ok(result);
 		}
 	}

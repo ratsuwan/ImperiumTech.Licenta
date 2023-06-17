@@ -9,17 +9,17 @@ namespace MagazinWebLicenta.Server.Controllers
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
-		private readonly IAuthService authService;
+		private readonly IServiciulAutentificari ServiciulAutentificari;
 
-		public AuthController(IAuthService authService)
+		public AuthController(IServiciulAutentificari ServiciulAutentificari)
 		{
-			this.authService = authService;
+			this.ServiciulAutentificari = ServiciulAutentificari;
 		}
 
 		[HttpPost("register")]
 		public async Task<ActionResult<ServiceResponse<int>>> Register(UserRegister request)
 		{
-			var response = await this.authService.Register(
+			var response = await this.ServiciulAutentificari.Register(
 				new User
 				{
 					Email = request.Email
@@ -37,7 +37,7 @@ namespace MagazinWebLicenta.Server.Controllers
 		[HttpPost("Login")]
 		public async Task<ActionResult<ServiceResponse<string>>> Login(UserLogin request)
 		{
-			var response = await this.authService.Login(request.Email, request.Password);
+			var response = await this.ServiciulAutentificari.Login(request.Email, request.Password);
 			if(!response.Success)
 			{
 				return BadRequest(response);
@@ -49,7 +49,7 @@ namespace MagazinWebLicenta.Server.Controllers
 		public async Task<ActionResult<ServiceResponse<bool>>> ChangePassword([FromBody] string newPassword)
 		{
 			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-			var response = await this.authService.ChangePassword(int.Parse(userId), newPassword);
+			var response = await this.ServiciulAutentificari.ChangePassword(int.Parse(userId), newPassword);
 
 			if(!response.Success)
 			{

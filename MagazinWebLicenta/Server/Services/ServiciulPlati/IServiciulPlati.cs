@@ -2,9 +2,9 @@
 
 using Stripe.Checkout;
 
-namespace MagazinWebLicenta.Server.Services.PaymentService
+namespace MagazinWebLicenta.Server.Services.ServiciulPlati
 {
-	public interface IPaymentService
+	public interface IServiciulPlati
 	{
 		Task<Session> CreateCheckoutSession();
 

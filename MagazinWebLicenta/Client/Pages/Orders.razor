@@ -1,5 +1,5 @@
 ﻿@page "/orders"
-@inject IOrderService OrderService
+@inject IServiciulComenzi ServiciulComenzi
 
 
 <h3>Comenzi</h3>
@@ -42,6 +42,6 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		orders = await OrderService.GetOrders();
+		orders = await ServiciulComenzi.GetOrders();
 	}	
 }

@@ -1,10 +1,10 @@
 ﻿@page "/login"
 @using Microsoft.AspNetCore.WebUtilities;
-@inject IAuthService AuthService
+@inject IServiciulAutentificari ServiciulAutentificari
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
-@inject ICartService CartService
+@inject IServiciulCosCumparaturi ServiciulCosCumparaturi
 
 <PageTitle>Login</PageTitle>
 <h3>Autentificare</h3>
@@ -49,15 +49,15 @@
 
 	private async Task HandleLogin()
 	{
-		var result = await AuthService.Login(user);
+		var result = await ServiciulAutentificari.Login(user);
 		if (result.Success)
 		{
 			errorMessage = string.Empty;
 
 			await LocalStorage.SetItemAsync("authToken", result.Data);
 			await AuthenticationStateProvider.GetAuthenticationStateAsync();
-			await CartService.StoreCartItems(true);
-			await CartService.GetCartItemsCount();
+			await ServiciulCosCumparaturi.StoreCartItems(true);
+			await ServiciulCosCumparaturi.GetCartItemsCount();
 			NavigationManager.NavigateTo(returnUrl);
 		}
 		else
